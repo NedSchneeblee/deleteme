@@ -4,22 +4,20 @@ pipeline {
     environment{
         DOCKER = credentials('Docker')
     }
-
+    
     stages {
         stage('Build') {
             steps {
                 sh 'docker build -t nedscneedblee/flaskapp .'
             }
         }
-        stage('Login'){
+        stage('Login and Push'){
             steps{
-                echo '$DOCKER | doker login -u nedscneedblee --password-stdin'
+                script{
+                    withDockerRegistry(credentialsId: 'Docker') {
+    // some block
+                }
             }
         }
-        stage('Push'){
-            steps {
-                sh 'docker push nedschneedblee/flaskapp'
-            }
-        }    
     }
 }

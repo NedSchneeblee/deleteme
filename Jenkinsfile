@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'docker build -t nedscneedblee/flaskapp .'
+                sh 'docker build -t nedscneedblee/flaskapp .'
             }
         }
         stage('Login'){

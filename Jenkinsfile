@@ -15,6 +15,11 @@ pipeline {
             steps{
                 echo '$DOCKER | doker login -u nedscneedblee --password-stdin'
             }
+        }
+        stage('Push'){
+            steps {
+                sh 'docker push nedschneedblee/flaskapp'
+            }
         }    
     }
 }

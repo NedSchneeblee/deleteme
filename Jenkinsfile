@@ -3,7 +3,7 @@ pipeline {
 
     
     stages {
-        stage('Login and Push'){
+        stage('Login, Build and Push'){
             steps {
                 script{
                     withDockerRegistry(credentialsId: 'Docker') {

@@ -15,7 +15,7 @@ pipeline {
         stage('AWS Commands'){
             steps{
                 script{
-                    withAWS(credentialsID: 'AWSCred', region: 'us-east-1'){
+                    withAWS(credentials: 'AWSCred', region: 'us-east-1'){
                         sh 'aws sts get-caller-identity'
                     }
                 }

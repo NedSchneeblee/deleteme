@@ -2,3 +2,31 @@ apiVersion: v1
 kind: Namespace
 metadata:
   name: tycam-namespace
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-deployment
+  namespace: tycam-namespace
+  labels:
+    app: flask
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: flask
+  template:
+    metadata:
+      labels:
+        app: flask
+    spec:
+      
+      containers:
+      - name: flask
+        image: nedschneedblee/flaskapp
+        ports:
+        - containerPort: 5000
+        imagePullPolicy: Always
+
+---
